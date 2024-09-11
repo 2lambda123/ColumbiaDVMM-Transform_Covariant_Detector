@@ -37,6 +37,7 @@ from tqdm import tqdm
 from datetime import datetime
 
 import argparse
+import fickling
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--learning_rate", nargs='?', type=float, default = 0.01,
@@ -85,7 +86,7 @@ test.load_by_name(args.test, patch_size = patch_size)
 print('Loading training stats:')
 try:
     file = open('../data/stats_%s.pkl'%args.training, 'r')
-    mean, std = pickle.load(file)
+    mean, std = fickling.load(file)
 except:
     print('No precompute stats! Calculate and save the stats from training data.')
     mean, std = train.generate_stats()

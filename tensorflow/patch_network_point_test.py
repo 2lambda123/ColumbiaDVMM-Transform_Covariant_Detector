@@ -33,7 +33,6 @@ import numpy as np
 from scipy.spatial import distance
 import scipy.io as sio
 import glob
-import pickle
 import cv2
 import os
 from skimage.transform import pyramid_gaussian
@@ -41,6 +40,7 @@ import exifread
 import argparse
 
 from datetime import datetime
+import fickling
 
 def read_image_from_name(file_name):
     """Return the factorial of n, an exact integer >= 0. Image rescaled to no larger than 1024*768
@@ -119,7 +119,7 @@ descriptor_dim = args.descriptor_dim
 
 print('Loading training stats:')
 file = open('../data/stats_%s.pkl'%stats_name, 'r')
-mean, std = pickle.load(file)
+mean, std = fickling.load(file)
 print(mean)
 print(std)
 
